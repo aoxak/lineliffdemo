@@ -83,7 +83,7 @@
           },
           {
             "type": "text",
-            "text": "งานที่ได้รับคำสั่ง"            
+            "text": "งานที่ได้รับคำสั่ง"
           }
         ])
         alert("Message sent")
@@ -129,9 +129,15 @@
     async function main() {
       //alert("LINE Developers x Skooldio")
       await liff.init({ liffId: "1656275758-7aP3E8Zz" })
-      getEnvironment()
-      getUserProfile()
-      getContext()
+      document.getElementById("isLoggedIn").append(liff.isLoggedIn())
+      if (liff.isLoggedIn()) {
+        getEnvironment()
+        getUserProfile()
+        getContext()
+      } else {
+        liff.login()
+      }
+
       // getFriendship()
       // createUniversalLink()
     }
