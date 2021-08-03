@@ -44,9 +44,9 @@
     console.log("Hello World!")
   </script> 
   -->
-     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/versions/2.12.0/sdk.js"></script>
-  
- 
+  <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/versions/2.12.0/sdk.js"></script>
+
+
   <!-- <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script> -->
   <script>
     function createUniversalLink() {
@@ -59,9 +59,11 @@
     }
 
     function closed() {
+
     }
 
     async function scanCode() {
+
     }
 
     function openWindow() {
@@ -71,6 +73,19 @@
     }
 
     async function sendMsg() {
+      if (liff.getContext().type !== "none") {
+        await liff.sendMessages([
+          {
+            "type": "sticker",
+            "stickerId": 1,
+            "packageId": 1
+          },
+          {
+            "type": "text",
+            "text": "งานที่ได้รับคำสั่ง"            
+          }
+        ])
+      }
     }
 
     function getContext() {
@@ -97,8 +112,8 @@
       document.getElementById("version").append(liff.getVersion())
       document.getElementById("accessToken").append(liff.getAccessToken())
       document.getElementById("isInClient").append(liff.isInClient())
- 
-    
+
+
       if (liff.isInClient()) {
         document.getElementById("btnLogOut").style.display = "none"
       } else {
@@ -113,7 +128,7 @@
       await liff.init({ liffId: "1656275758-7aP3E8Zz" })
       getEnvironment()
       getUserProfile()
-       getContext()
+      getContext()
       // getFriendship()
       // createUniversalLink()
     }
