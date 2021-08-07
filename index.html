@@ -8,8 +8,8 @@
   <!--<link rel="stylesheet" href="css/style.css" media="all">
   -->
   <script>
-    document.write('<link rel="stylesheet" href="css/style.css?cache='+ new Date().getTime() + '" media="all">')
-    </script>
+    document.write('<link rel="stylesheet" href="css/style.css?cache=' + new Date().getTime() + '" media="all">')
+  </script>
 </head>
 
 <body>
@@ -42,12 +42,13 @@
   <button id="btnLogOut" onclick="logOut()">Log Out</button>
   <button id="btnClose" onclick="closed()">Close</button>
 
-  <script src="js/vconsole.min.js"></script> 
+  <script src="js/vconsole.min.js"></script>
   <script>
     var vConsole = new VConsole()
     console.log("Hello World!")
-  </script> 
-  
+    console.log("status : " + liff.isLoggedIn())
+  </script>
+
   <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/versions/2.12.0/sdk.js"></script>
 
 
@@ -152,3 +153,4 @@
 </body>
 
 </html>
+
