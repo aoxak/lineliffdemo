@@ -16,7 +16,81 @@
 </head>
 
 <body>
-  <p>ok</p>
+  <ion-app>
+
+    <!--
+          <ion-header>
+        <ion-toolbar>
+            <ion-buttons slot="start">
+                <ion-back-button></ion-back-button>
+            </ion-buttons>
+            <ion-title>STRR-Job-Task</ion-title>
+        </ion-toolbar>
+
+
+    </ion-header>
+    -->
+
+
+    <ion-content>
+
+      <ion-tabs>
+
+
+        <ion-tab tab="tab-schedule">
+          <ion-nav id="tab01">
+
+
+
+          </ion-nav>
+        </ion-tab>
+
+        <ion-tab tab="tab-speaker">
+          <ion-nav></ion-nav>
+        </ion-tab>
+
+        <ion-tab tab="tab-map" component="page-map">
+          <ion-nav></ion-nav>
+        </ion-tab>
+
+        <ion-tab tab="tab-about" component="page-about">
+          <ion-nav></ion-nav>
+        </ion-tab>
+
+        <ion-tab-bar slot="bottom">
+          <ion-tab-button tab="tab-schedule">
+            <ion-icon name="calendar"></ion-icon>
+            <ion-label>Schedule</ion-label>
+            <ion-badge>6</ion-badge>
+
+          </ion-tab-button>
+
+          <ion-tab-button tab="tab-speaker">
+            <ion-icon name="person-circle"></ion-icon>
+            <ion-label>Speakers</ion-label>
+          </ion-tab-button>
+
+          <ion-tab-button tab="tab-map">
+            <ion-icon name="map"></ion-icon>
+            <ion-label>Map</ion-label>
+          </ion-tab-button>
+
+          <ion-tab-button tab="tab-about">
+            <ion-icon name="information-circle"></ion-icon>
+            <ion-label>About</ion-label>
+          </ion-tab-button>
+        </ion-tab-bar>
+
+      </ion-tabs>
+
+
+    </ion-content>
+
+
+
+
+  </ion-app>
+ 
   <!--
   <p id="os"><b>OS:</b> </p>
   <p id="language"><b>Language:</b> </p>
@@ -48,16 +122,16 @@
   <button id="btnLogOut" onclick="logOut()">Log Out</button>
   <button id="btnClose" onclick="closed()">Close</button>
   -->
-  
+
 
   <script src="js/vconsole.min.js"></script>
   <script>
     var vConsole = new VConsole()
     console.log("Hello World!")
-    
+
   </script>
 
-  
+
 
   <!-- <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script> -->
   <script>
@@ -106,63 +180,63 @@
     }
 
     function getContext() {
-   /*   document.getElementById("type").append(liff.getContext().type)
-      document.getElementById("viewType").append(liff.getContext().viewType)
-      document.getElementById("utouId").append(liff.getContext().utouId)
-      document.getElementById("roomId").append(liff.getContext().roomId)
-      document.getElementById("groupId").append(liff.getContext().groupId)*/
+      /*   document.getElementById("type").append(liff.getContext().type)
+         document.getElementById("viewType").append(liff.getContext().viewType)
+         document.getElementById("utouId").append(liff.getContext().utouId)
+         document.getElementById("roomId").append(liff.getContext().roomId)
+         document.getElementById("groupId").append(liff.getContext().groupId)*/
       console.log("status : " + liff.isLoggedIn());
     }
 
     async function getUserProfile() {
       const profile = await liff.getProfile()
-      var lineitem={};
+      var lineitem = {};
       lineitem.pictureUrl = profile.pictureUrl;
       lineitem.lineuserid = profile.userId;
       lineitem.displayname = profile.displayName;
       lineitem.statusMessage = profile.statusMessage;
       lineitem.lineemail = liff.getDecodedIDToken().email;
       console.log(lineitem);
-    /*  document.getElementById("pictureUrl").src = profile.pictureUrl
-      document.getElementById("urlpicture").append(profile.pictureUrl)
-      document.getElementById("userId").append(profile.userId)
-      document.getElementById("statusMessage").append(profile.statusMessage)
-      document.getElementById("displayName").append(profile.displayName)
-      document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)*/
-
+      /*  document.getElementById("pictureUrl").src = profile.pictureUrl
+        document.getElementById("urlpicture").append(profile.pictureUrl)
+        document.getElementById("userId").append(profile.userId)
+        document.getElementById("statusMessage").append(profile.statusMessage)
+        document.getElementById("displayName").append(profile.displayName)
+        document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)*/
+      //loadpage();
     }
 
     function getEnvironment() {
-    /*  document.getElementById("os").append(liff.getOS())
-      document.getElementById("language").append(liff.getLanguage())
-      document.getElementById("version").append(liff.getVersion())
-      document.getElementById("accessToken").append(liff.getAccessToken())
-      document.getElementById("isInClient").append(liff.isInClient())
-
-
-      if (liff.isInClient()) {
-        document.getElementById("btnLogOut").style.display = "none"
-      } else {
-        document.getElementById("btnMsg").style.display = "none"
-        document.getElementById("btnScanCode").style.display = "none"
-        document.getElementById("btnClose").style.display = "none"
-      }*/
+      /*  document.getElementById("os").append(liff.getOS())
+        document.getElementById("language").append(liff.getLanguage())
+        document.getElementById("version").append(liff.getVersion())
+        document.getElementById("accessToken").append(liff.getAccessToken())
+        document.getElementById("isInClient").append(liff.isInClient())
+  
+  
+        if (liff.isInClient()) {
+          document.getElementById("btnLogOut").style.display = "none"
+        } else {
+          document.getElementById("btnMsg").style.display = "none"
+          document.getElementById("btnScanCode").style.display = "none"
+          document.getElementById("btnClose").style.display = "none"
+        }*/
     }
 
     async function main() {
       //alert("LINE Developers x Skooldio")
       liff.ready.then(() => {
-    //    document.getElementById("isLoggedIn").append(liff.isLoggedIn())
-      if (liff.isLoggedIn()) {
-        getEnvironment()
-        getUserProfile()
-        getContext()
-      } else {
-        liff.login()
-      }
+        //    document.getElementById("isLoggedIn").append(liff.isLoggedIn())
+        if (liff.isLoggedIn()) {
+          //getEnvironment()
+          getUserProfile()
+          // getContext()
+        } else {
+          liff.login()
+        }
       })
       await liff.init({ liffId: "1656275758-7aP3E8Zz" })
-     
+
 
       // getFriendship()
       // createUniversalLink()
@@ -172,4 +246,3 @@
 </body>
 
 </html>
-
