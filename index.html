@@ -7,9 +7,12 @@
   <title>My LIFF app</title>
   <!--<link rel="stylesheet" href="css/style.css" media="all">
   -->
+  <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/versions/2.12.0/sdk.js"></script>
+
   <script>
     document.write('<link rel="stylesheet" href="css/style.css?cache=' + new Date().getTime() + '" media="all">')
   </script>
+  <link rel="shortcut icon" href="#">
 </head>
 
 <body>
@@ -19,6 +22,7 @@
   <p id="isInClient"><b>isInClient:</b> </p>
   <p id="accessToken"><b>AccessToken:</b> </p>
   <img id="pictureUrl">
+  <p id="urlpicture"><b>urlpicture:</b> </p>
   <p id="userId"><b>userId:</b> </p>
   <p id="displayName"><b>displayName:</b> </p>
   <p id="statusMessage"><b>statusMessage:</b> </p>
@@ -49,8 +53,7 @@
     
   </script>
 
-  <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/versions/2.12.0/sdk.js"></script>
-
+  
 
   <!-- <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script> -->
   <script>
@@ -110,6 +113,7 @@
     async function getUserProfile() {
       const profile = await liff.getProfile()
       document.getElementById("pictureUrl").src = profile.pictureUrl
+      document.getElementById("urlpicture").append(profile.pictureUrl)
       document.getElementById("userId").append(profile.userId)
       document.getElementById("statusMessage").append(profile.statusMessage)
       document.getElementById("displayName").append(profile.displayName)
